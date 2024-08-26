@@ -13,7 +13,8 @@ class AstRenderer(BaseRenderer):
 
         Overrides super().render. Delegates the logic to get_ast.
         """
-        return json.dumps(get_ast(token), indent=2) + '\n'
+        # Use ensure_ascii=False to avoid utf-8 output problems
+        return json.dumps(get_ast(token), indent=2, ensure_ascii=False) + '\n'
 
     def __getattr__(self, name):
         return lambda token: ''
